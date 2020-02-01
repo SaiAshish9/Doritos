@@ -1,0 +1,70 @@
+<!-- <!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <input type="text" name="text" value="">
+<a href="#" class="say">Play</a>
+
+    <audio src="" hidden>
+
+    </audio>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+      $(function(){
+          $('a.say').on('click',function(e){
+                e.preventDefault();
+                var text= $('input[name="text"]').val();
+              text = encodeURIComponent(text);
+              console.log(text);
+  var url = "http://translate.google.com/translate_tts?tl=en&q=text";
+
+  $('audio').attr('src', url).get(0).play();
+
+       });
+      });
+    </script>
+
+  </body>
+</html> -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset='utf-8' />
+    <!-- <script src='./voicerss-tts.min.js'></script> -->
+</head>
+<body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+  <input type="text" name="text" value="">
+<a href="#" class="say">Play</a>
+
+  <audio src="" hidden>
+
+  </audio>
+
+    <script>
+$('a').click(function(e){
+  e.preventDefault()
+  var text= $('input[name="text"]').val();
+text = encodeURIComponent(text);
+      $('audio').attr('src', `http://api.voicerss.org/?key=305057a15696485cb229b428b0b0ca4d&c=MP3hl=en-in&src=${text}&f=alaw_44khz_stereo		`).get(0).play();
+
+})
+
+        //
+        // VoiceRSS.speech({
+        //     key: '305057a15696485cb229b428b0b0ca4d',
+        //     src: 'Hello, world!',
+        //     hl: 'en-us',
+        //     r: 0,
+        //     c: 'mp3',
+        //     f: '44khz_16bit_stereo',
+        //     ssml: false
+        // });
+    </script>
+</body>
