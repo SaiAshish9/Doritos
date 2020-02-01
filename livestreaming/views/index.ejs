@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.dev.js">
+
+
+</script>
+
+
+<script
+  src="https://code.jquery.com/jquery-3.4.1.js"
+  integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+  crossorigin="anonymous"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script type="text/javascript">
+
+  const socket=io.connect('http://localhost:3000');
+  socket.on('image',(image)=>{
+    const imageE=document.getElementById('image')
+    imageE.src=`data:image/jpeg;base64,${image}`
+  })
+
+</script>
+
+  <body>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Sv6dMFF_yts" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<img id="image"  />
+
+
+<div>
+
+<p>
+weapon
+</p>
+
+<p id="weapon">
+
+</p>
+
+<br />
+
+<p>
+Offensive  Probability
+</p>
+
+<p id="probability">
+
+</p>
+
+</div>
+
+  </body>
+
+<script src="index.js">
+
+</script>
+
+</html>
