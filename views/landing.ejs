@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>Feel-At-Home</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link class="favic" rel="icon" href="favicon.png" sizes="64x64"/>
+
+ <base href="https://doritos.herokuapp.com/"/>
+ <!-- <base href="http://localhost:3000/"/> -->
+
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+<link rel="stylesheet" href="css/searchuser.css">
+
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script
+      src="https://code.jquery.com/jquery-3.2.1.min.js"
+      integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+      crossorigin="anonymous">
+    </script>
+
+
+  </head>
+
+<style media="screen">
+.container{
+width:100%;
+}
+.skills{
+  text-align: right;
+  padding-bottom: 10px;
+  color: white;
+}
+.html{
+  width:90%;
+  background-color: #f44336;
+}
+
+.html1{
+  width: 50%;
+  background-color: #F0E68C;
+  }
+.html2{
+  width:20%;
+  background-color: #4CAF50;
+}
+
+
+</style>
+
+
+
+
+  <body>
+<div style="margin-bottom:6rem;" >
+  <nav class="navbar fixed-top navbar-expand navbar-light bg-light shadow">
+    <ul class="navbar-nav mr-auto">
+    <div class="navbar-header" style="display:inline">
+
+<% var i=Math.floor(Math.random()*6)+1 %>
+<% if(i==1) { %>
+    <a href="/recipe" class="navbar-brand"   style=" color:#997381;"><i class="fas fa-user-shield"></i>
+    </a>
+<% }else if(i==2){ %>
+  <a href="https://www.google.com" class="navbar-brand"  style=" color:#997381;"><i class="fas fa-user-shield"></i>
+  </a>
+  <% }else if(i==3){ %>
+<a href="https://www.swiggy.com" class="navbar-brand"  style=" color:#997381;"><i class="fas fa-user-shield"></i>
+</a>
+<% }else if(i==4){ %>
+  <a href="https://www.zomato.com" class="navbar-brand"  style=" color:#997381;"><i class="fas fa-user-shield"></i>
+  </a>
+  <% }else if(i==5){ %>
+<a href="https://www.youtube.com" class="navbar-brand"  style=" color:#997381;"><i class="fas fa-user-shield"></i>
+</a>
+<% }else if(i==6) { %>
+  <a href="https://www.twitter.com" class="navbar-brand"  style=" color:#997381;"><i class="fas fa-user-shield"></i>
+  </a>
+  <% } %>
+
+
+
+
+
+
+
+<% if(userId) { %>
+  <a class="navbar-brand" href="/<%= userId %>" style=" color:#997381;  font-weight:bold">Feel-At-Home</a>
+
+<% }else{ %>
+  <a class="navbar-brand" href="/" style=" color:#997381;  font-weight:bold">Feel-At-Home</a>
+
+<% } %>
+
+
+
+
+
+  </div>
+    </ul>
+
+<ul class="navbar-nav mr-auto " style="margin:0 -300px;">
+  <h1 class="hidden" style="display:none" value="<%= userId %>"></h1>
+<div style="color: #2c3e51;  font-family: 'Ubuntu', sans-serif; width:800px; position:absolute; top:7px; margin:auto;" >
+  <div class="main">
+    <select name="" style="" class="users">
+      <option value="RandomUser" style="color:#997381; font-weight:bold;">Search Companion </option>
+      <hr />
+      <% if(users){ %>
+      <% users.forEach(user =>{ %>
+        <% if(user.username !== username){ %>
+          <option value="<%= user.username %>">
+  <a type="submit" href="/chat?username=<%= user.username %>&room=456789">
+        <%= user.username %>
+  </a>
+          </option>
+          <hr />
+    <%    } %>
+      <% }) %>
+  </select>
+  </div>
+  <% if(userId){ %>
+  <a href="" style="position:relative; left:-41px; top:3px; " class=" searchuser1 btn try"><i style="color:white;" class="fa fa-search" area-hidden="true"></i></a>
+  <% } else{ %>
+    <a href="" style="position:relative; left:-41px; top:3px; " class=" searchuser1 btn try"><i style="color:white;" class="fa fa-search" area-hidden="true"></i></a>
+  <% } %>
+  <% } %>
+
+</div>
+</ul>
+
+
+
+
+
+
+
+
+
+
+<% if(isLoggedIn) {%>
+<div class="dropdown notifydropdown">
+<a href="#" class="btn btn-default "  id="menu1" data-toggle="dropdown" style="cursor:pointer;  ">
+<i class="far fa-envelope" style="color:#997381;font-size: 20px; display: inline; margin-right:15px;" aria-hidden="true"></i>
+<span style="font-size:15px !important; position: relative;top:-10px;">
+<% if(user.notifications.length){ %>
+  <%= user.notifications.length %>
+<% } %>
+</span>
+        </i>
+      </a>
+<ul style="padding-left:10px;" class="dropdown-menu" role="menu" aria-labelledby="menu1">
+<li role="presentation"><a style="color:#997381;font-weight: bold; "  role="menuitem" tabindex="-1" href="#">Notifications:</a></li>
+<hr />
+<% user.notifications.forEach(notify=>{ %>
+             <li class ="parent" role="presentation">
+             <h6  class="notification" value="<%= notify %>" style="font-weight:bold; color:grey">
+               <%= notify %>
+               <br />
+               <% if(notify==='CompanionsChat'){ %>
+                 <a id="joinnotifiedroom" href="/<%= userId %>/friendschat?username=<%= username %>&room=CompanionsChat"  class=" btn btn-link  try2 "  style="color:#997381"><i    class="fas fa-check"></i> </a>
+
+              <% }else{ %>
+                 <a id="joinnotifiedroom" href="/<%= userId %>/<%= username %>/<%= notify %>.<%= username %>/chat?username=<%= username %>&room=<%= notify %>.<%= username %>"  class=" btn btn-link  try2 "  style="color:#997381"><i    class="fas fa-check"></i> </a>
+
+              <% } %>
+
+
+               <a id="removenotifications"  href="/<%= userId %>" class=" btn btn-link  try2 "     style="color:red;cursor:pointer;"><i class="fas fa-times"></i> </a>
+               </h6>
+             </li>
+             <% }) %>
+</ul>
+</div>
+<% } %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <% if(isLoggedIn) {%>
+      <div class="dropdown">
+      <a href="#" class="btn btn-default friendrequests "  id="menu1" data-toggle="dropdown" style="cursor:pointer; margin-right:10px; ">
+        <i class="far fa-bell" style="color:#997381;font-size: 20px; display: inline;">
+<span style="font-size:15px !important; position: relative;top:-10px;">
+<% if(requests.length){ %>
+  <%= requests.length %>
+<% } %>
+</span>
+        </i>
+      </a>
+        <ul style="padding-left:10px;" class="dropdown-menu" role="menu" aria-labelledby="menu1">
+             <li role="presentation"><a style="color:#997381;font-weight: bold; "  role="menuitem" tabindex="-1" href="#">Friend Requests:</a></li>
+             <hr />
+<% if(userId){ %>
+  <h1 value="<%= userId %>" class="userId" style="height: 0px;display: none;">
+  </h1>
+<% } %>
+<% if(requests){ %>
+<% requests.forEach(request=>{ %>
+             <li class ="parent" role="presentation">
+             <h6 class="sender" style="font-weight:bold; color:grey">
+               <%= request %>
+               <br />
+               <button   class="accept btn btn-link  try2 " id="<%= request %>" style="color:#997381"><i    class="fas fa-check"></i> </button>
+               <button name="<%= request %>"  class=" decline btn btn-link  try2 "   style="color:red"><i class="fas fa-times"></i> </button>
+               </h6>
+             </li>
+             <% }) %>
+             <% } %>
+           </ul>
+         </div>
+      <h6 id="hidden" style="height:0px; display: none;" value="<%= username %>">
+      </h6>
+    <ul class="navbar-nav">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="profile_dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           <span class="fa-stack fa-1x">
+            <i class="fas fa-circle fa-stack-2x"></i>
+            <i class="fas fa-user fa-stack-1x fa-inverse"></i>
+          </span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profile_dropdown">
+<% if(userId) { %>
+  <a class="dropdown-item" href="/<%= userId %>">
+    <i class="fas fa-home"></i> Home
+  </a>
+<% } else{ %>
+  <a class="dropdown-item" href="/">
+    <i class="fas fa-home"></i> Home
+  </a>
+<% }%>
+          <a class="dropdown-item" href="/<%= userId %>/profile">
+            <i class="fas fa-user"></i> Profile
+          </a>
+
+          <a class="dropdown-item" href="/<%= userId%>/help">
+            <i class="fas fa-question-circle"></i> Help
+          </a>
+          <div class="dropdown-divider"></div>
+
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/">
+            <i class="fas fa-sign-out-alt"></i> Log Out
+          </a>
+        </div>
+      </li>
+    </ul>
+    <% } %>
+    <% if(!isLoggedIn){ %>
+      <a style="cursor:pointer;z-index:1" href="/login" class="btn try float-right"> <i style="margin-right: 4px; color:white;" class="fas fa-sign-in-alt"></i>Login</a>
+      <a href="/login" style="cursor:pointer; z-index: 1" class="btn btn-link float-right try2"><i style="margin-right: 1.5px;" class="fas fa-user-plus"></i>   Sign Up</a>
+    <% } %>
+  </nav>
+</div>
+
+
+
+
+
+<div class="container-fluid mt-3">
+  <div class="row">
+  <div class="col-md-3 mb-3 order-1"  >
+
+
+
+
+
+
+    <% if(userId){ %>
+      <div class="card shadow mb-3">
+          <img class="card-img-top" src="img/<%= user.coverphoto %>">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-12">
+                <img src="img/<%= user.photo %>" class="round float-left mr-2">
+                <h5 class="mb-0"><a href="/<%= userId %>/profile" class="text-body"><%= user.username %></a></h5>
+                <h5><a href="/<%= userId %>/profile" class="text-body"><small class="text-muted">
+                  <% if(user.nickname){ %>
+                  @<%= user.nickname %>
+  <% }else{ %>
+    @<%= user.username %>
+          <% } %>
+                </small></a></h5>
+              </div>
+              <div class="col-4 text-center">
+                <a href="/<%= userId %>/friendschat?username=<%= user.username %>&room=CompanionsChat" class="text-body" data-toggle="tooltip" data-placement="top" title="Companions">
+                  <span class="fa-layers fa-2x">
+                    <i class="far fa-comment-dots"></i>
+                    <span class="fa-layers-counter bg-primary fa-layers-bottom-right"></span>
+                  </span>
+                </a>
+              </div>
+              <div class="col-4 text-center">
+                <a href="#" class="redirecttonotify text-body" data-toggle="tooltip" data-placement="top" title="Friend Requests">
+                  <span class="fa-layers fa-2x">
+                    <i class="fas fa-user-friends"></i>
+                    <span class="fa-layers-counter bg-primary fa-layers-bottom-right"></span>
+                  </span>
+                </a>
+              </div>
+              <div class="col-4 text-center">
+                <a href="#" class="redirecttofriendrequests text-body" data-toggle="tooltip" data-placement="top" title="Invitations">
+                  <span class="fa-layers fa-2x">
+                    <i class="fas fa-user-plus"></i>
+                    <span class="fa-layers-counter bg-primary fa-layers-bottom-right"></span>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+    <% } %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="card shadow mb-3">
+      <div class="card-body">
+        <h5 >
+
+
+        What's hot
+
+
+        </h5>
+
+        <p> <a href="/events" style="cursor:pointer; color:#212529">
+                  Events
+                </a><br><small class="text-muted">3 categories</small></p>
+                <p>
+            <a  href="https://www.unwomen.org/en/what-we-do/ending-violence-against-women/increasing-knowledge-and-awareness" style="cursor:pointer; color:#212529">
+                News
+            </a>
+
+
+                  <br><small class="text-muted">unwomen.org</small></p>
+
+                <p>
+
+      <%    if(username){ %>
+            <a href="/<%= username %>/groupchat?username=<%= username %>&room=groupchat" style="cursor:pointer; color:#212529">
+      <%     } else{ %>
+            <a href="/newuser/groupchat?username=newuser&room=groupchat" style="cursor:pointer; color:#212529">
+        <%  } %>
+
+                  Groups
+                  <br>
+</a>
+                  <small class="text-muted">
+                  <%= userslength %> members
+                </small></p>
+
+                <p>
+<% if(user){ %>
+<% if(user.category==="Volunteer"){ %>
+  <a  href="/<%= userId %>/emergency" style="cursor:pointer; color:#212529">
+      Emergency
+  </a>
+  <br><small class="text-muted">
+    <% var x= 0; %>
+
+    <% posts.forEach(post=>{ %>
+      <% if(post.width>=86){ %>
+      <% x=x+1} %>
+    <% }) %>
+<%= x %>
+
+     Red Alerts
+
+  </small></p>
+<% }} %>
+
+
+
+
+
+      </div>
+      <div class="card-footer">
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="col-md-6 order-3 order-md-2 ">
+
+      <% if(userId){ %>
+
+      <div id="typeform" class="post  shadow mb-3">
+
+        <div style="text-align:center" class="alert alert-success">
+    <a href="https://www.google.com" style="cursor:pointer">  Please fill details in the type-form. </a>
+        </div>
+
+      </div>
+<% } %>
+
+      <div class=" post card shadow mb-3" style=" ">
+
+        <div class="card-body">
+
+
+        <% if(userId){ %>
+          <form method="post" action="/<%= userId %>" enctype="multipart/form-data">
+          <% } %>
+          <% if(!userId) {%>
+          <form >
+          <% } %>
+            <div class="form-group">
+
+            <div class="form-group">
+              <textarea name="description" class="form-control" id="txt_post" rows="4" placeholder="What you're doing right now?"></textarea>
+            </div>
+            <div class="form-group">
+
+              <input class="file-upload" name="photo" id="photo" style="display:none" type="file" accept="image/*"/>
+
+
+          <a  class="btn try" style="color:white; cursor:pointer" >
+              <i id="imageupload" class="fas fa-image" data-toggle="tooltip" data-placement="top" title="Upload an image"></i>
+          </a>
+
+              <button type="submit" class="btn try float-right"><i class="fas fa-comment"></i> Post</button>
+              <button class="btn btn-link float-right try2"><i class="fas fa-times"></i> Discard</button>
+            </div>
+          </form>
+        </div>
+      </div>
+</div>
+
+
+      <% posts.forEach(post=> { %>
+      <div  class="posts card shadow mb-3" >
+
+<% if(showwidth && post.createdBy!== username){ %>
+  <div class="container">
+
+<%    if(post.width >= 86){ %>
+      <div class="skills html" style="width:(<%= post.width %>)%"></div>
+<%    }else if(post.width< 86 && post.width >= 50){ %>
+      <div class="skills html1" style="width:(<%= post.width %>)%"></div>
+  <%  }else{ %>
+      <div class="skills html2" style="width:(<%= post.width %>)%"></div>
+
+    <% } %>
+
+
+</div>
+
+<% } %>
+
+        <div class="card-body" style="">
+
+
+
+
+          <div class="d-flex">
+        <%  if(post.postIcon=='default.jpg' && post.postIconUrl){ %>
+          <div class="flex-shrink-1">
+            <img src="<%= post.postIconUrl %>" class="round float-left mr-2">
+          </div>
+<% }else{ %>
+  <div class="flex-shrink-1">
+    <img src="img/<%= post.postIcon %>"   class="round float-left mr-2">
+  </div>
+<%} %>
+<div class="flex-grow-1">
+<% if(!userId||post.createdBy!==user.username){ %>
+  <h5><a href="#" class="try1"><%= post.createdBy %> <small class="text-muted">
+    <% if(post.nickname){ %>
+    @<%= post.nickname %>
+  <% }else{ %>
+  @<%= post.createdBy %>
+  <% } %>
+  </small></a></h5>
+<% }else{ %>
+  <form method="post" action="/<%= userId %>/remove" >
+    <% if(userId){ %>
+
+    <h5><a href="/<%= username %>/profile/<%= post.createdBy %>/<%= username %>.<%= post.createdBy %>" class="try1"><%= post.createdBy %> <small class="text-muted">
+      <% }else{ %>
+        <h5><a href="/undefined/profile/<%= post.createdBy %>/undefined.<%= post.createdBy %>" class="try1"><%= post.createdBy %> <small class="text-muted">
+
+      <% } %>
+
+      <% if(post.nickname){ %>
+      @<%= post.nickname %>
+  <% }else{ %>
+  @<%= post.createdBy %>
+  <% } %>
+    </small></a>
+              <button type="submit" class="btn btn-link float-right try2" style="position:absolute;top:2px; right:5px;">
+                <i class="fas fa-times"></i>
+              </button>
+              </h5>
+              </form>
+<% } %>
+<%  if(post.image){ %>
+  <div class="container">
+<img src="img/<%= post.image %>" class="card-img" style="max-height:30rem; width:100%; ">
+</div>
+<% } %>
+<% if(post.description.length) { %>
+  <p name="description">
+<%= post.description %>
+  </p>
+<% }%>
+                            <% if( !post.laughed) {%>
+                                           <i  value="<%= userId %>" id="<%= post._id %>" class="laugh laughed<%= post._id %> far fa-laugh-beam try3 " style="cursor:pointer"></i>
+                                           <% }else if( post.laughed){ %>
+                                             <% if(post.laughedUsers.includes(username)) {%>
+                                               <i  value="<%= userId %>" id="<%= post._id %>" class="laugh laughed<%= post._id %> far fa-laugh-beam try3 " style=" color:orange;cursor:pointer"></i>
+                                               <% }else{ %>
+                                                 <i  value="<%= userId %>" id="<%= post._id %>" class="laugh laughed<%= post._id %> far fa-laugh-beam try3 " style="cursor:pointer"></i>
+                                                       <% } %>
+                                                         <% } %>
+              <% if( !post.liked) {%>
+                             <i  value="<%= userId %>" id="<%= post._id %>" class="like liked<%= post._id %> far fa-heart try4 " style="cursor:pointer"></i>
+                             <% }else if( post.liked){ %>
+                               <% if(post.likedUsers.includes(username)) {%>
+                                 <i  value="<%= userId %>" id="<%= post._id %>" class="like liked<%= post._id %> far fa-heart try4 " style=" color:red;cursor:pointer"></i>
+                                 <% }else{ %>
+                                   <i  value="<%= userId %>" id="<%= post._id %>" class="like liked<%= post._id %> far fa-heart try4 " style="cursor:pointer"></i>
+                                         <% } %>
+                                           <% } %>
+<%# BookmarksLogic %>
+                 <% if(!post.bookmarked) {%>
+  <i  value="<%= userId %>" id="<%= post._id %>"  class="bm bookmark<%= post._id %>   far fa-bookmark " style="  cursor:pointer; position:absolute;right:70px;"></i>
+  <% }else if( post.bookmarked){ %>
+    <% if(post.bookmarkedUsers.includes(username)) {%>
+      <i  value="<%= userId %>" id="<%= post._id %>"  class="bm bookmark<%= post._id %>   far fa-bookmark " style=" color:blue;  cursor:pointer; position:absolute;right:70px;"></i>
+    <% }else{ %>
+      <i  value="<%= userId %>" id="<%= post._id %>"  class="bm bookmark<%= post._id %>   far fa-bookmark " style="  cursor:pointer; position:absolute;right:70px;"></i>
+      <% } %>
+        <% } %>
+        <%# Share Button %>
+<a class="share-btn share-btn-inverse share-btn-more"  style="color:#997381" href="https://www.addtoany.com/share_save?linkurl=https://doritos.herokuapp.com?title=No More"
+   title="More share options">
+  <i style="cursor:pointer; position:absolute;right:40px;" class="fas fa-share"></i>
+</a>
+                 <% if(!userId) { %>
+                   <% if(!show) { %>
+                     <form style="display:inline" method="get" action="/<%= post._id %>/show">
+                       <button type="submit"  style="text-align:center; position:absolute; bottom:5px; left:41%;"  class="btn btn-link   try2" > View Comments</button>
+                     </form>
+<% } else if(show)  { %>
+  <% posts.forEach(y=>{ %>
+    <%  if(commentsId==post._id){ %>
+                                     <p >
+                                     <% y.comments.forEach(comment =>{ %>
+                                     <span style="font-weight:bold">
+                                     <%= comment.author %>
+                                     </span>
+                                     <span>
+                                     <%= comment.comment %>
+                                     </span>
+                                     <br />
+                                     <% }) %>
+                                     </p>
+      <% } else{ %>
+        <button type="submit"  style="text-align:center; position:absolute; bottom:5px; left:41%;"  class="btn btn-link   try2" > View Comments</button>
+
+      <% }%>
+<%  }) %>
+
+                   <% } %>
+                   <% } %>
+<%if(post.description.length!==0){%>
+  <% if(add && userId){ %>
+    <form method="post" action="/<%= userId %>/comments/<%= postID %>">
+  <% }else if(userId){ %>
+    <form method="post" action="/<%= userId %>/comments">
+  <% } else if(!userId){ %>
+    <form >
+    <% } %>
+    <input name="author" value="<%= post.createdBy %>" style="display:none;"></input>
+                             <div class="gallery-comments" style="margin:3px;">
+                             <% if(add && postID==post._id){ %>
+ <% if(userId){ %>
+                                  <div class="comment-add">
+                                    <input name="comment" id="comment-input" autocomplete="off" maxlength="60" placeholder="Say something nice..">
+                                    <span class="chars-counter"><span id="chars-current">0</span>/60</span>
+                                    <button type="submit" class="btn btn-link  float-right try2" style="position: relative;right:1rem;" > Add </button>
+                                  </div>
+<%  } %>
+                             </div>
+                               <p >
+                               <% post.comments.forEach(comment =>{ %>
+                               <span style="font-weight:bold">
+                               <%= comment.author %>
+                               </span>
+                               <span>
+                               <%= comment.comment %>
+                               </span>
+                               <br />
+                               <% }) %>
+                               </p>
+                               <% }else{ %>
+                                 <div class="comment-add">
+                  <!-- <% if(userId) { %> -->
+                  <button type="submit"  style="text-align:center; position:absolute; bottom:5px; left:41%;"  class="btn btn-link   try2" > View Comments</button>
+<!-- <%} %> -->
+</div>
+</div>
+                               <% } %>
+</form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    <% })%>
+
+<div class="skeleton">
+  <%- include('./skeleton.ejs') -%>
+</div>
+
+    <div class="card shadow mb-3 my-skeleton-card">
+      <div class="card-body">
+        <div class="d-flex">
+          <div class="flex-shrink-1">
+            <div class="my-skeleton my-skeleton-img mr-2"></div>
+          </div>
+          <div class="flex-grow-1">
+            <div class="d-inline-block my-skeleton my-skeleton-link"></div>
+            <div class="d-inline-block my-skeleton my-skeleton-at-mark"></div>
+            <div class="my-skeleton my-skeleton-content"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+    <div class="col-md-3 mb-3 order-2 order-md-3">
+
+
+
+
+
+      <div class="card shadow mb-3">
+              <div class="card-body">
+                <h5>Recommended</h5>
+
+<% users.forEach(user=>{ %>
+<% if(user.category=='Volunteer'){ %>
+  <% if(user.username!==username){ %>
+  <p>
+    <img src="img/<%= user.photo %>" class="round float-left mr-2">
+    <% if(userId){ %>
+      <a href="/<%= username %>/profile/<%= user.username %>/<%= username %>.<%= user.username %>" class="try1"><%= user.username %> <small class="text-muted">
+
+    <% }else{ %>
+      <a href="/undefined/profile/<%= user.username %>/undefined.<%= user.username %>" class="try1"><%= user.username %> <small class="text-muted">
+
+  <%  } %>
+
+      <% if(user.nickname){ %>
+      @<%= user.nickname %>
+<% }else{ %>
+@<%= user.username %>
+<% } %>
+    </small></a></p>
+  <hr>
+<% } %>
+<% } %>
+<% }) %>
+
+
+              </div>
+              <div class="card-footer">
+                <%    if(username){ %>
+                <!-- <a href="/groupchat?username=<%= username %>&room=groupchat" class="try1">Find more</a> -->
+                <%     } else{ %>
+                <!-- <a href="/groupchat?username=newuser&room=groupchat" class="try1">Find more</a> -->
+                <%  } %>
+
+              </div>
+            </div>
+
+
+
+
+
+
+
+
+
+<% if(userId) {%>
+      <div class="card shadow" style="margin-top:15px;">
+        <div class="card-body">
+        <h5 style="color:#987380; font-weight:bold;"  >
+        <i class="fa fa-users" aria-hidden="true"></i>
+      My  Friends
+        </h5>
+        </div>
+        <div class="card-body">
+<% if(friends){ %>
+  <% friends.forEach(friend=>{ %>
+  <% if(friend){ %>
+    <p>
+    <img src="img/<%= friend.image %>" class="round float-left mr-2">
+    <a href="/<%= username %>/profile/<%= friend.username %>/<%= username %>.<%= friend.username %>" class="try1"><%= friend.username %> <br />
+    </a>
+          <small  class="text-muted">
+    <% if(friend.nickname){ %>
+    @<%= friend.nickname %>
+<% }else{ %>
+@<%= friend.username %>
+<% } %>
+</small>
+    <% if(user.notifications){ %>
+  <% user.notifications.forEach(n=>{ %>
+    <% if(n=== friend.username){ %>
+      <!-- <a href="/chat?username=<%= username %>&room=<%= friend.username %>.<%= username %>" style="cursor:pointer;" >
+      <small style="color:#987380!important"  class="text-muted">Connect</small></p>
+      </a> -->
+      <%  } %>
+    <% }) %>
+    <% }if(user.notifications.length===0){ %>
+      <a href="/chat?username=<%= username %>&room=<%= username %>.<%= friend.username %>" style="cursor:pointer;" >
+      </a>
+    <%  } %>
+       <p>
+  <%  } %>
+  <% }) %>
+<% } %>
+        </div>
+        <div class="card-footer">
+          <!-- <a href="/groupchat?username=<%= username %>&room=groupchat" class="try1">Find more</a> -->
+        </div>
+      </div>
+<% } %>
+
+
+
+
+      <div class="card shadow mb" style="margin-top:15px;">
+        <div class="card-body">
+          &copy; 2019 Dorito
+        </div>
+        <div class="card-footer">
+          Languages
+          <br />
+          <a href="#" class="languages try1">English (UK)</a>
+          <br />
+           <a href="#" class="languages try1">English (US)</a>
+           <br />
+           <a href="#" class="languages try1">English (Aus)</a>
+        </div>
+
+      </div>
+      <% if(!userId){ %>
+
+      <div class="card shadow mb" style="margin-top:15px;">
+
+      <div class="card-body">
+  <i class="fas fa-question-circle"></i>
+    <a href="/1234/help"  style="color:grey; cursor:pointer">
+      Help
+    </a>
+
+
+      </div>
+    </div>
+    <% } %>
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+  </body>
+
+
+
+<script>
+  $('#recipe').click(function(e){
+    // alert('hi')
+  })
+</script>
+
+  <script type="text/javascript" src="js/skeleton.js"></script>
+
+ <script type="text/javascript" src="js/share.js"></script>
+  <script type="text/javascript" src="js/searchuser.js"></script>
+  <script type="text/javascript" src="js/search.js"></script>
+  <script type="text/javascript" src="js/share.js"></script>
+  <script type="text/javascript" src="js/quotes.js"></script>
+  <script type="text/javascript" src="js/comments.js"></script>
+  <script type="text/javascript" src="js/121chat.js"></script>
+  <script type="text/javascript" src="js/friends.js"></script>
+  <script type="text/javascript" src="js/notifications.js"></script>
+  <script type="text/javascript" src="js/postimageupload.js"></script>
+  <script type="text/javascript" src="js/redirect.js"></script>
+
+
+
+</html>

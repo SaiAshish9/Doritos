@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Profile</title>
+    <link class="favic" rel="icon" href="favicon.png" sizes="64x64"/>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <base href="https://doritos.herokuapp.com/"/>
+    <!-- <base href="http://localhost:3000/"/> -->
+
+<link rel="stylesheet" href="css/profile.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css?family=Tangerine&display=swap" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+  </head>
+
+
+<style media="screen">
+
+</style>
+
+
+
+
+  <body class="profile-page sidebar-collapse">
+<!--
+  <div class="collapse navbar-collapse justify-content-end" id="navigation" data-nav-image="../assets/img/blurred-image-1.jpg"> -->
+
+            <nav class="navbar fixed-top  navbar-light bg-light shadow" style="max-height:5rem;">
+
+
+              <div class="navbar-header">
+              <a class="navbar-brand" href="http://demo.themefisher.com/demos/?theme=food-code" style=" color:#997381;"><i class="fas fa-user-shield"></i>
+          </a>
+              <a class="navbar-brand" href="/<%= userId %>" style=" color:#997381;  font-weight:bold">Feel-At-Home</a>
+            </div>
+
+
+              <form method="post" action="/<%= user._id %>/profilepic" style="position:absolute; right:2rem;" enctype="multipart/form-data">
+
+              <div class="p-image" style="position:fixed; top:1rem; display: inline;">
+<!-- <i class="fas fa-link" style="position:absolute; right:10rem;"></i> -->
+                   <i class="fa fa-camera upload-button" style="position:absolute; right:7rem;"></i>
+                    <input class="file-upload" name="photo" id="photo" type="file" accept="image/*"/>
+                 <button type="submit" class="btn try float-right" style="position: relative; top:-1rem"> <i style="margin-right: 4px; color:white;" class="fas fa-save"></i>Save</button>
+               </div>
+             </nav>
+
+
+<!-- name="photo" id="photo" -->
+</form>
+
+
+  <!-- End Navbar -->
+  <div class="wrapper">
+    <div class="page-header clear-filter" filter-color="orange">
+      <div class="page-header-image" data-parallax="true" style="background-image:url('img/<%= user.coverphoto %>');">
+      </div>
+      <div class="container">
+        <div class="photo-container">
+          <img  class="profile-pic "src="img/<%= user.photo %>" alt="">
+        </div>
+
+        <h3 class="title"><%= username %> </h3>
+          <div class="content">
+          <div class="social-description">
+            <h2><%= user.commentCount %></h2>
+            <p>Comments</p>
+          </div>
+          <div class="social-description">
+            <h2><%= user.postCount %></h2>
+            <p>Posts</p>
+          </div>
+          <div class="social-description">
+            <h2><%= user.bookmarkCount %></h2>
+            <p>Bookmarks</p>
+          </div>
+        </div>
+        <br />
+        <div class="social-description">
+          <p>
+            <i class="fa fa-list-alt" aria-hidden="true"></i>
+
+            Category : <%=user.category %>
+          </p>
+        </div>
+        <br/>
+        <div class="social-description">
+          <p>
+            <a href="https://www.google.com/maps?q=<%= user.address %>" style="color:white">
+          <i class="fas fa-map-marker-alt"></i>
+   Location  : <%= user.address %> </p>
+ </a>
+
+
+        </div>
+
+      </div>
+
+      </div>
+
+    </div>
+    <div class="section">
+      <div class="container">
+
+
+        <div class="button-container">
+          <form method="post" action="/<%=user._id %>/coverphoto"  enctype="multipart/form-data">
+            <input style="display:none"  name="photo1" id="cover-upload" type="file" accept="image/*"/>
+
+          <a   id="coverupload" class=" btn btn-primary btn-round btn-lg" style="color:white">
+                            <i class=" fas fa-image"></i>
+          </a>
+          <br />
+
+          <button type="submit" class="btn try ">Save</button>
+        </form>
+
+          </div>
+
+
+
+          <div class="row" style="display:block">
+
+          <div class="col-md-6 ml-auto mr-auto">
+            <input   type="text" placeholder="nickname" style=" width:240px;  border:1px solid pink; text-align:center ;margin: 20px auto 0;" class=" nickname form-control"   value="<%= user.nickname %>">
+            <a  value="<%= userId %>" href="" class="updatenickname"   style="color:orange; font-size: 25px; text-shadow: 0 0 16px violet;text-align:center ; position:relative;; top:-34px; left:77%;  "><i    class="fas fa-check"></i> </a>
+
+<br />
+<br />
+
+            <h4 class="title text-center">Wall</h4>
+            <div class="nav-align-center">
+              <ul class="nav nav-pills nav-pills-primary nav-pills-just-icons" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#profile" role="tablist">
+                    <i class="fa fa-bookmark"></i>
+                  </a>
+                </li>
+                <li class="nav-item" style="display:block!important">
+                  <a class="nav-link active" data-toggle="tab" href="#home" role="tablist">
+                    <i class="now-ui-icons design_image"></i>
+                    <!-- <i class="now-ui-icons location_world"></i> -->
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" data-toggle="tab" href="#messages" role="tablist">
+                    <i class="fa fa-pen" area-hidden="true"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="tab-content gallery" style="display:block">
+            <div class="tab-pane " id="home" role="tabpanel">
+              <div class="col-md-10 ml-auto mr-auto">
+                <div class="row collections">
+<% posts.forEach(post=>{ %>
+
+
+  <div class="col-md-6">
+    <img src="<%= post.image %>" alt="" class="img-raised">
+    <h4><b>Title :</b> <%= post.title %></h4>
+    <h4><b>Description :</b> <%= post.description %></h4>
+                    </div>
+
+<% }) %>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-pane active" id="profile" role="tabpanel">
+              <div class="col-md-10 ml-auto mr-auto">
+                <div class="row collections">
+                  <% postsAll.forEach(post=>{ %>
+
+              <% if(post.bookmarkedUsers.includes(user.username)){ %>
+                <div class="col-md-6" style="border-radius:2px;">
+                  <img src="<%= post.image %>" alt="" class="img-raised">
+                  <h4><b>Title :</b> <%= post.title %></h4>
+                  <h4><b>Description :</b> <%= post.description %></h4>
+                                  </div>
+              <% } %>
+
+
+
+                  <% }) %>
+
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane" id="messages" role="tabpanel">
+              <div class="col-md-10 ml-auto mr-auto">
+                <div class="row collections">
+                  <% posts.forEach(post=>{ %>
+
+
+                    <div class="col-md-6">
+                      <h4><b>Title :</b> <%= post.title %></h4>
+                      <h4><b>Description :</b> <%= post.description %></h4>
+                                      </div>
+
+                  <% }) %>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+ </body>
+ <script
+     src="https://code.jquery.com/jquery-3.2.1.min.js"
+     integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+     crossorigin="anonymous">
+   </script>
+   <script type="text/javascript" src="js/coverimage.js">
+   </script>
+<script type="text/javascript" src="js/profile.js">
+
+</script>
+<script type="text/javascript" src="js/nickname.js">
+</script>
+
+</html>

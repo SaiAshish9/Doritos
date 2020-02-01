@@ -1,0 +1,304 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+
+		<meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Chat</title>
+        <link class="favic" rel="icon" href="favicon.png" sizes="64x64"/>
+
+		<meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta property="og:title" content="" />
+        <meta property="og:url" content="" />
+        <meta property="og:description" content="" />
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+
+
+		<link rel="icon" href="assets/img/logo.jpg">
+		<link rel="apple-touch-icon" href="img/favicons/apple-touch-icon.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="img/favicons/apple-touch-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="img/favicons/apple-touch-icon-114x114.png">
+    <link rel="stylesheet" href="css/chatbox.css">
+
+	    <!-- ==============================================
+		CSS
+		=============================================== -->
+
+				<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+
+		<!-- ==============================================
+		Feauture Detection
+		=============================================== -->
+		<script src="http://themashabrand.com/templates/Fluffs/assets/js/modernizr-custom.js"></script>
+
+
+
+    <link href="https://fonts.googleapis.com/css?family=Tangerine&display=swap" rel="stylesheet">
+  </head>
+
+<body style="background-color:#f4f4f4; ">
+
+
+
+<nav class="navbar  fixed-top navbar-expand navbar-light bg-light shadow">
+  <ul class="navbar-nav mr-auto">
+    <div class="navbar-header">
+    <a class="navbar-brand" href="http://demo.themefisher.com/demos/?theme=food-code" style=" color:#997381;"><i class="fas fa-user-shield"></i>
+    </a>
+    <a class="navbar-brand" href="/" style=" color:#997381;  font-weight:bold">Feel-At-Home</a>
+    </div>
+  </ul>
+
+  <ul class="navbar-nav">
+    <div class="navbar-header pull-right">
+    <a class="navbar-brand" href="" style=" color:#987380;"><i class="fas fa-backspace"></i>
+    </a>
+    <a class="navbar-brand" href="/" style=" color:#987380;  font-weight:bold">Go Back</a>
+    </div>
+  </ul>
+</nav>
+
+
+
+
+<div class="container-fluid" style="position: absolute; left:0px; margin: auto;right:0px; display:flex; flex-direction:column; align-items:center !important; justify-content:center !important;">
+  <section class="chat1">
+    <div class="container">
+  <div class="row">
+
+  <div class="row" >
+   <div class="col-lg-4 ">
+    <div class="messages-container" style="height:320px;position: absolute; left:-300px; right:-2rem;  margin-bottom:5rem; width:800px; margin-right: 2rem;min-width:200px; ">
+
+   <div class="message-header">
+    <div class="message-title">
+     <h4>Users</h4>
+    </div>
+
+   </div>
+   <div id="sidebar" class="chat__sidebar">
+
+           </div>
+   <script id="sidebar-template" type="text/html">
+
+   <div class="messages-list">
+     <ul style="list-style-type: none !important;">
+       {{#users}}
+
+      <li class="active" style="border:2px solid white; text-align:center;list-style-type: none !important;">
+     <div class="user-message-details">
+      <div class="user-message-img">
+       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNYVy9K1eZNLH7l4Gyw2lN3f1gQ5yU6iOuNMCgq1FIwIHE_eiw&s" class="img-responsive img-circle" alt="">
+       <span class="user-online"></span>
+      </div>
+      <div id="sidebar" class="user-message-info">
+
+     </div>
+      <div class="user-message-info" >
+       <h4>{{username}}</h4>
+        </div>
+        <br/>
+
+       </div>
+      </li>
+      {{/users}}
+
+      <li>
+
+
+
+    </div>
+   </div>
+
+ </script>
+
+
+   <div class="col-lg-8 " >
+
+
+    <div class="conversation-box" style="height:420px; margin-left:auto; position: relative; left:-14px; width:800px;min-width:200px;">
+
+   <div class="conversation-header">
+    <div class="user-message-details">
+     <div class="user-message-img">
+      <img src="http://www.sbkwu.edu.pk/conference2018/conference_monogram.jpg" alt="" class="img-responsive img-circle">
+
+     </div>
+     <div class="user-message-info">
+      <h4>John Doe</h4>
+      <p>Online</p>
+     </div>
+<br/>
+
+<a href="#" title=""><i class="fas fa-signal" style="position: absolute;left:3.5rem; top:2rem; "></i></a>
+<br/>
+
+    </div>
+
+   </div><!--/ conversation-header -->
+
+
+   <div class="conversation-container" >
+     <div id="messages" class="chat__messages"></div>
+
+     <div class="chat__main">
+     <script id="message-template" type="text/html">
+
+     <div class="convo-box convo-left" >
+      <div class="convo-area">
+       <div class="convo-message">
+
+      <p>{{message}}</p>
+       </div>
+       <span>{{createdAt}}</span>
+      </div>
+      <div class="convo-img">
+       <img src="https://www.cit.edu.in/wp-content/uploads/2015/11/Logo-400x400.jpg" alt="" class="img-responsive img-circle">
+<p>
+{{username}}
+</p>
+      </div>
+
+     </div>
+   </script>
+
+
+   <script id="location-message-template" type="text/html">
+
+    <div class="convo-box pull-right">
+     <div class="convo-area pull-right">
+      <div class="convo-message">
+        <p ><a  style="color:white; text-shadow:0 0 3px pink; font-weight:bold;" href="{{url}}" target="_blank">My current location</a></p>
+      </div>
+      <span>{{createdAt}}</span>
+      <div class="convo-img">
+        <img src="https://www.pinclipart.com/picdir/middle/98-989256_inspired-women-lead-women-empowerment-clipart-png-download.png" class="img-responsive img-circle"  alt="">
+       <p>
+         {{username}}
+       </p>
+      </div>
+     </div>
+
+
+    </div>
+    <div id="sidebar" class="chat__sidebar">
+
+        </div>
+    <div id="messages" class="chat__messages"></div>
+
+  </script>
+
+
+
+                <div class="type_messages" style="height:10rem; position:absolute;bottom:0px; top:22rem; right:0px; width:100%;" >
+                 <div class="input-field">
+
+
+<div class="chat">
+
+
+
+<form id="message-form" style="">
+                    <textarea  name="message" placeholder="Type something " ></textarea>
+                    <ul class="imoji">
+
+              <li>
+                <button  class="btn try float-right">
+                  <a href="#">
+
+
+
+<i class="fas fa-paper-plane"></i>
+              </a>
+
+              </button>
+
+
+            </li>
+</form>
+
+
+            <li>
+              <button  id="send-location" class="btn try float-right">
+                <a href="#">
+
+<i class="fas fa-map-marker-alt"></i>
+              </a>
+
+              </button>
+
+
+            </li>
+            <li>
+               <!-- <button  class="btn try float-right"> -->
+                 <a class="btn try float-right" href="/chat?username=sai&room=206">
+
+<i class="fas fa-trash"></i>
+
+</a>
+               <!-- </button> -->
+
+
+
+             </li>
+</div>
+           </ul>
+                 </div>
+                </div><!--/ type_messages -->
+
+   </div>
+
+
+
+
+        </div>
+   </div>
+
+  </div>
+ </div>
+
+   </div>
+   </div>
+  </section>
+</div>
+
+
+	<script src="http://themashabrand.com/templates/Fluffs/assets/js/jquery.min.js"></script>
+	<script src="http://themashabrand.com/templates/Fluffs/assets/js/bootstrap.min.js"></script>
+	<script src="http://themashabrand.com/templates/Fluffs/assets/js/base.js"></script>
+	<script src="http://themashabrand.com/templates/Fluffs/assets/plugins/slimscroll/jquery.slimscroll.js"></script>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
+  <script>
+	$('#Slim,#Slim2').slimScroll({
+	        height:"auto",
+			position: 'right',
+			railVisible: true,
+			alwaysVisible: true,
+			size:"8px",
+		});
+	</script>
+
+  </body>
+</html>
+
+
+<form class="form-inline ml-auto " style="margin:auto;">
+  <div class="input-group">
+    <input type="text" class="form-control" placeholder="Search Post" aria-label="Search" aria-describedby="search">
+    <div class="input-group-append">
+      <a href="# " class="btn try"><i class="fas fa-search"></i></a>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Step2</title>
+    <link class="favic" rel="icon" href="favicon.png" sizes="64x64"/>
+
+    <base href="https://doritos.herokuapp.com/"/>
+<!-- <base href="http://localhost:3000/"/> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="css/login.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<!-- bootstrap js -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<link href="https://fonts.googleapis.com/css?family=Tangerine&display=swap" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+  </head>
+
+<style media="screen">
+  h6{
+    cursor:pointer
+  }
+</style>
+  <body>
+    <form   action="/<%= userId %>/step2" method="post">
+
+      <h1 style="font-size:4rem;">Feel At Home</h1>
+      <div class="sak2">
+        <h6 >Just One Step Away From Registeration!</h6>
+            </div>
+            <div class="sak1" style="display:inline">
+
+              <h4>
+                <i  class="fas fa-globe-americas icon co" ></i>
+
+                Where do you put up?
+              </h4>
+            </div>
+
+              <div class="input-options " style="display:inline;">
+
+                <input class="input-field" id="search" name="location" type="text" placeholder="Location" autocomplete="off" style="width:450px">
+</div>
+                <div id="options" style=" width:450px;position: relative; top: -33px;display:block;  overflow:hidden; border: 1px solid gray ; border-top:0px; ">
+                </div>
+
+    <button type="submit" style="">Submit</button>
+</form>
+</body>
+
+<script>
+
+    var access_token='pk.eyJ1Ijoic2FpYXNoaXNoIiwiYSI6ImNrMWdyNTc4cjA3dzEzb2sxaTlrdzFiOHoifQ.B1JQ-8A43BNcL-0kMxO9Bg'
+
+    $('#options').hide()
+    $('#search').keyup(function(e){
+var value= $(this).val();
+if($(this).val().length){
+  $('#options').show()
+  var test='https://api.mapbox.com/geocoding/v5/mapbox.places/'+ value +'.json?access_token='+access_token
+
+$('#options').html('')
+
+$.get(test)
+.then(data=>
+{
+  var x =data.features.map(x=> x= x.place_name);
+  console.log(x[0],x[1]);
+  $('#options').append(`<h6   style='padding:10px'>
+  ${x[0]}
+  </h6>
+  <h6   style='padding:10px'>
+  ${x[1]}
+  </h6><h6   style='padding:10px'>
+  ${x[2]}
+  </h6><h6   style='padding:10px'>
+  ${x[3]}
+  </h6><h6   style='padding:10px'>
+  ${x[4]}
+  </h6>
+    `)
+
+$('h6').click(function(e){
+  e.preventDefault()
+  $('#search').val($(this).text())
+  $('#options').hide()
+})
+
+})
+
+}else{
+  $('#options').hide()
+
+}
+
+    })
+    </script>
+
+
+</html>

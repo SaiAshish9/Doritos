@@ -1,0 +1,104 @@
+body {
+  text-align: center;
+  background-color: #f4f4f4;
+
+}
+
+#level-title {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 3rem;
+  margin:  5%;
+  color: #997381;
+}
+
+.container {
+  display: block;
+  width: 50%;
+
+}
+
+.btn {
+  margin: 25px;
+  display: block;
+  height: 200px;
+  width: 200px;
+  border: 10px solid black;
+  border-radius: 20%;
+  text-align: center;
+  padding-top: 60px;
+  color:white;
+  text-shadow: 0 0 8px white;
+}
+
+.game-over {
+  background-color: red;
+  opacity: 0.8;
+}
+
+.red {
+  background-color: red;
+
+  background-image:url('https://images.yourstory.com/cs/wordpress/2016/06/women-empowerment.jpg?fm=png&auto=format') !important;
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center;
+}
+
+.green {
+  background-color: green;
+
+  background-image:url('https://images.yourstory.com/cs/wordpress/2016/06/women-empowerment.jpg?fm=png&auto=format') ;
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center;
+
+}
+
+.blue {
+  background-color: blue;
+  background-image:url('https://images.yourstory.com/cs/wordpress/2016/06/women-empowerment.jpg?fm=png&auto=format') ;
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center;
+}
+
+.yellow {
+  background-color: yellow;
+  background-image:url('https://images.yourstory.com/cs/wordpress/2016/06/women-empowerment.jpg?fm=png&auto=format') ;
+background-repeat: no-repeat;
+background-size: cover;
+background-position: center;
+}
+
+.pressed {
+  box-shadow: 0 0 20px white;
+  background-color: grey;
+}
+
+.btn1{
+  text-align: center;
+  margin: auto;
+  position: absolute;
+  left:50vw;
+  color: #997381;
+}
+
+
+.video-background{
+  height: 100px;
+  display: flex;
+  overflow: hidden;
+
+}
+video{
+
+    transform: translate(0%, 0%);
+    width: 100%;
+}
+#mute{
+  cursor: pointer;
+  height: 50px;
+  width: 50px;
+
+  background-size: cover;
+}

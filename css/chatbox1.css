@@ -1,0 +1,94 @@
+body,html{
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+  margin: 0;
+  overflow: hidden;
+  position: absolute;
+  top:0vh;
+  bottom:0vh;
+  }
+
+body{
+    font-family: sans-serif;
+    background-image: linear-gradient(180deg,#dddbd1,#d2dbdc);
+    background-size: cover;
+  }
+
+.top{
+  height: 100px;
+  width:100%;
+  background-color: #6d384bb3;
+  position: fixed;
+  z-index: -1;
+}
+
+.chatbox{
+  height: 300px !important;
+  width: 95%;
+  margin-bottom: 30px;
+  margin-top: 20px;
+  padding: 0;
+}
+.profile-pic{
+  height: 40px;
+  width: 40px;
+}
+.form-rounded{
+  border-radius: 1rem;
+}
+.friend-pic{
+  height: 50px;
+  width: 50px;
+}
+.name{
+  font-weight: 400;
+  color: #000;
+}
+.under-name{
+  font-size: 12px;
+  line-height: 15px;
+  max-height: 15px;
+}
+.icon{
+  font-size: 20px;
+  color:  #6d384bb3;
+
+}
+.iconch{
+  color: #9CA1A3;
+  }
+.pcl{
+  color:  #6d384bb3;
+}
+
+.chat-pic{
+  height: 30px;
+  width: 30px;
+}
+.receive{
+  border-radius: 1rem;
+  background-color: #BC8F8F;
+  padding: 10px 15px;
+  display:inline-block;
+}
+.sent{
+  border-radius: 1rem;
+  background-color: #FAEBD7;
+  padding: 10px 15px;
+  display:inline-block;
+}
+
+.time{
+  font-size: 10px;
+  }
+img{
+  border-radius: 50%;
+}
+.card{
+height: 88vh;
+}
+#messages1{
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
